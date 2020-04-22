@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
+
+    val mViewModele : MainViewModele by activityViewModels<MainViewModele>()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -27,5 +32,14 @@ class SecondFragment : Fragment() {
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+
+
+        val resultObserver = object :  Observer<Int> {
+            override fun onChanged(t: Int?) {
+                textview_second.append(t.toString())
+            }
+        }
+
+        mViewModele.kilometres.observe(viewLifecycleOwner,resultObserver)
     }
 }
