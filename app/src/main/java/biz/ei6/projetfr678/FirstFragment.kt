@@ -51,23 +51,17 @@ class FirstFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-            /*   main_first_date.append(mViewModele.date.format(DateTimeFormatter.ISO_LOCAL_DATE))
-        main_first_arrivee_km.append(mViewModele.arriveeKM.toString())
-        main_first_arrivee_location.append(mViewModele.arriveeLocation)
-        main_first_depart_km.append(mViewModele.departKM.toString())
-        main_first_depart_location.append(mViewModele.departLocation)
-*/
-
         binding.setVariable(mainViewModele,mViewModele)
+
+        val obs = FragmentObservateur()
+        lifecycle.addObserver(obs)
+
+        obs.lifecycle.addObserver(ObsObservateur())
+
     }
 
     private fun valider() {
-    /*    mViewModele.date = LocalDate.parse(main_first_date.text,DateTimeFormatter.ISO_LOCAL_DATE)
-        mViewModele.departKM = Integer.parseInt(main_first_depart_km.text.toString())
-        mViewModele.arriveeKM = Integer.parseInt(main_first_arrivee_km.text.toString())
 
-        mViewModele.departLocation = main_first_depart_location.text.toString()
-        mViewModele.arriveeLocation = main_first_arrivee_location.text.toString()*/
 
     }
 }
