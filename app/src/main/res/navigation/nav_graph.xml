@@ -13,7 +13,10 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/SecondFragment" >
+
+        </action>
+
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -24,5 +27,11 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <argument
+            android:name="voyage"
+
+            app:argType="biz.ei6.projetfr678.Voyage"
+            />
     </fragment>
+
 </navigation>
