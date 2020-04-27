@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -12,10 +11,22 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
 
-    android:id="@+id/main_first_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
+
+    <Button
+        android:id="@+id/main_first_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+
+        app:layout_constraintBottom_toBottomOf="@id/main_first_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="24dp"
+        />
+
 
 
     <EditText
@@ -42,8 +53,8 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="9"
-        android:text="@={mainViewModele.departKMTxt}"
-        android:hint="@string/km"
+        android:text="@{mainViewModele.departKMTxt}"
+
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@id/main_first_depart_location"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,23 +66,40 @@
         android:id="@+id/main_first_depart_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="14"
-        android:hint="@string/departure"
+        android:text="@{mainViewModele.departLocation}"
+        tools:text="@android:string/unknownName"
         android:inputType="textPersonName"
-        android:text="@={mainViewModele.departLocation}"
-        app:layout_constraintStart_toStartOf="@id/main_first_depart_km"
-        app:layout_constraintTop_toBottomOf="@id/main_first_depart_km"
-        app:layout_constraintBottom_toTopOf="@id/main_first_partir"/>
-    <Button
-        android:id="@+id/main_first_partir"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/main_first_depart_km"
+        app:layout_constraintStart_toEndOf="@id/main_first_depart_km"
+        app:layout_constraintTop_toTopOf="@id/main_first_depart_km" />
 
-        android:text="Partir"
+    <EditText
+        android:id="@+id/main_first_arrivee_km"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_first_depart_location"
-        app:layout_constraintBottom_toTopOf="@id/main_first_guideline"
-        />
+        android:autofillHints=""
+        android:ems="9"
+        android:hint="@string/km"
+        android:inputType="textPersonName"
+        android:text="@={mainViewModele.arriveeKMTxt}"
+
+        app:layout_constraintBottom_toTopOf="@id/main_first_arrivee_location"
+        app:layout_constraintStart_toStartOf="@id/main_first_depart_km"
+        app:layout_constraintTop_toBottomOf="@id/main_first_depart_location" />
+
+    <EditText
+        android:id="@+id/main_first_arrivee_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:ems="14"
+        android:hint="@string/destination"
+        android:text="@={mainViewModele.arriveeLocation}"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@id/main_first_guideline"
+        app:layout_constraintStart_toStartOf="@id/main_first_depart_km"
+        app:layout_constraintTop_toBottomOf="@id/main_first_arrivee_km" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_first_guideline"

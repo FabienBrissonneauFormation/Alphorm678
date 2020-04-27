@@ -1,29 +1,26 @@
 package biz.ei6.projetfr678
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnticipateOvershootInterpolator
-import android.view.animation.BounceInterpolator
 import android.widget.Button
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.transition.ChangeBounds
+import androidx.transition.Scene
+import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
-import biz.ei6.projetfr678.databinding.FragmentFirstBinding
 import biz.ei6.projetfr678.BR.mainViewModele
 import biz.ei6.projetfr678.databinding.FragmentFirstScene1Binding
+import biz.ei6.projetfr678.databinding.FragmentFirstScene2Binding
 import kotlinx.android.synthetic.main.fragment_first.*
-import kotlinx.android.synthetic.main.fragment_first.main_first_date
-import kotlinx.android.synthetic.main.fragment_first.main_first_depart_km
-import kotlinx.android.synthetic.main.fragment_first.main_first_depart_location
 import kotlinx.android.synthetic.main.fragment_first_scene1.*
+import kotlinx.android.synthetic.main.fragment_first_scene1.main_first_date
+import kotlinx.android.synthetic.main.fragment_first_scene1.main_first_depart_km
+import kotlinx.android.synthetic.main.fragment_first_scene1.main_first_depart_location
+import kotlinx.android.synthetic.main.fragment_first_scene2.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -37,6 +34,10 @@ class FirstFragment : Fragment() {
 
     lateinit var binding: FragmentFirstScene1Binding
 
+    lateinit var scene1 : Scene
+
+    lateinit var scene2 : Scene
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,15 +46,19 @@ class FirstFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentFirstScene1Binding>(
             inflater,
             R.layout.fragment_first_scene1,
-            container,
+            main_first_racine,
             false
         )
         binding.lifecycleOwner = this
+        binding.setVariable(mainViewModele, mViewModele)
+        binding.executePendingBindings();
         return binding.getRoot()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.setVariable(mainViewModele, mViewModele)
 
         val btn = view.findViewById<Button>(R.id.main_first_button)
         btn?.setOnClickListener {
@@ -64,17 +69,19 @@ class FirstFragment : Fragment() {
         btnPartir?.setOnClickListener {
             partir()
         }
+
+
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        binding.setVariable(mainViewModele, mViewModele)
+      /*  binding.setVariable(mainViewModele, mViewModele)
 
         val obs = FragmentObservateur()
         lifecycle.addObserver(obs)
-
+*/
     }
 
     private fun valider() {
@@ -94,42 +101,21 @@ class FirstFragment : Fragment() {
     }
 
     private fun partir() {
-        val set = ConstraintSet()
 
-        val bds = ChangeBounds()
-        bds.duration = 3000
-        bds.interpolator = AnticipateOvershootInterpolator() //BounceInterpolator()
-
-        TransitionManager.beginDelayedTransition(main_first_layout,bds)
-
-
-        set.connect(
-            R.id.main_first_depart_location,
-            ConstraintSet.START,
-            R.id.main_first_depart_km,
-            ConstraintSet.END,
-            10
+        val binding = DataBindingUtil.inflate<FragmentFirstScene2Binding>(
+            layoutInflater,
+            R.layout.fragment_first_scene2,
+            main_first_racine,
+            false
         )
-        set.connect(
-            R.id.main_first_depart_location,
-            ConstraintSet.TOP,
-            R.id.main_first_depart_km,
-            ConstraintSet.TOP,
-            10
-        )
-        set.connect(
-            R.id.main_first_depart_location,
-            ConstraintSet.BOTTOM,
-            R.id.main_first_depart_km,
-            ConstraintSet.BOTTOM,
-            10
-        )
+        binding.lifecycleOwner = this
+        binding.setVariable(mainViewModele, mViewModele)
+        binding.executePendingBindings();
 
-        set.constrainWidth(R.id.main_first_depart_location, ConstraintSet.WRAP_CONTENT)
-        set.constrainHeight(R.id.main_first_depart_location, ConstraintSet.WRAP_CONTENT)
+        val loadedScene = Scene(main_first_layout, binding.root)
+        val transition = TransitionInflater.from(context).inflateTransition(R.transition.transition)
 
-        set.setVisibility(R.id.main_first_partir, ConstraintSet.INVISIBLE)
+        TransitionManager.go(loadedScene, transition)
 
-        set.applyTo(main_first_layout)
     }
 }
