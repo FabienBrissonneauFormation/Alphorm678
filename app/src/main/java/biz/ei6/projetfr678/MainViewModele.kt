@@ -40,7 +40,4 @@ class MainViewModele : ViewModel() {
     var kilometres = MutableLiveData<Int>()
 
 
-    fun enregistre() {
-        Log.d(TAG, "Ici on enregistrera les données ...")
-    }
 }

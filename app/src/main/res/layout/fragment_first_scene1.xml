@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data >
+        <variable
+            name="mainViewModele"
+            type="biz.ei6.projetfr678.MainViewModele" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main_first_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+
+    <EditText
+        android:id="@+id/main_first_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:autofillHints=""
+        android:ems="9"
+        android:text="@={mainViewModele.dateTxt}"
+        android:hint="@string/date"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@id/main_first_depart_km"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <EditText
+        android:id="@+id/main_first_depart_km"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="9"
+        android:text="@={mainViewModele.departKMTxt}"
+        android:hint="@string/km"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@id/main_first_depart_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_first_date" />
+
+    <EditText
+        android:id="@+id/main_first_depart_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="14"
+        android:hint="@string/departure"
+        android:inputType="textPersonName"
+        android:text="@={mainViewModele.departLocation}"
+        app:layout_constraintStart_toStartOf="@id/main_first_depart_km"
+        app:layout_constraintTop_toBottomOf="@id/main_first_depart_km"
+        app:layout_constraintBottom_toTopOf="@id/main_first_partir"/>
+    <Button
+        android:id="@+id/main_first_partir"
+
+        android:text="Partir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_first_depart_location"
+        app:layout_constraintBottom_toTopOf="@id/main_first_guideline"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_first_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
