@@ -2,13 +2,15 @@ package biz.ei6.projetfr678
 
 import android.os.Bundle
 import android.util.Log
-import com.google.android.material.snackbar.Snackbar
+
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import androidx.navigation.Navigation
+
+import androidx.navigation.fragment.findNavController
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,11 +22,15 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            nav_host_fragment.findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
         Log.d(TAG,"oncreate")
+
+
+        tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_email)})
+        tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_dialer)})
+        tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_map)})
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

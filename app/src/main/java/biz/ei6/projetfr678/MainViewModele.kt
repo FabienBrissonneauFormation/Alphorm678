@@ -39,5 +39,6 @@ class MainViewModele : ViewModel() {
 
     var kilometres = MutableLiveData<Int>()
 
+    var voyages = MutableLiveData<ArrayList<Voyage>>(ArrayList<Voyage>())
 
 }

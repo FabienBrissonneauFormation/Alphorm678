@@ -70,21 +70,16 @@ class FirstFragment : Fragment() {
             partir()
         }
 
-
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-      /*  binding.setVariable(mainViewModele, mViewModele)
-
-        val obs = FragmentObservateur()
-        lifecycle.addObserver(obs)
-*/
     }
 
     private fun valider() {
+
 
 
         val voyage = Voyage(
@@ -117,5 +112,9 @@ class FirstFragment : Fragment() {
 
         TransitionManager.go(loadedScene, transition)
 
+        val btn = view?.findViewById<Button>(R.id.main_first_button)
+        btn?.setOnClickListener {
+            valider()
+        }
     }
 }

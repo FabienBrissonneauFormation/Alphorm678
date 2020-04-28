@@ -6,12 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
+
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_second.*
+
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -33,21 +36,27 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
+        val fab = view.findViewById<FloatingActionButton>(R.id.fab)
+
+        fab?.setOnClickListener { view ->
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
-
 
         val args = navArgs<SecondFragmentArgs>()
         val voyage = args.value.voyage
         Log.d(TAG, voyage.toString())
 
-        val resultObserver = object :  Observer<Int> {
+        mViewModele.voyages.value!!.add(voyage)
+
+        main_second_voyagesliste.adapter = VoyagesAdapter(requireContext(), mViewModele.voyages.value!!)
+        main_second_voyagesliste.layoutManager = LinearLayoutManager(context)
+
+      /*  val resultObserver = object :  Observer<Int> {
             override fun onChanged(t: Int?) {
                 textview_second.append(t.toString())
             }
         }
 
-        mViewModele.kilometres.observe(viewLifecycleOwner,resultObserver)
+        mViewModele.kilometres.observe(viewLifecycleOwner,resultObserver)*/
     }
 }

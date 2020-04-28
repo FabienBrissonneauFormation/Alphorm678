@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:text="@string/next"
 
-        app:layout_constraintBottom_toBottomOf="@id/main_first_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/main_first_arrivee_location_til"
+        app:layout_constraintBottom_toTopOf="@id/main_first_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="24dp"
@@ -34,16 +35,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:autofillHints=""
-        android:ems="9"
-        android:text="@={mainViewModele.dateTxt}"
+
+        android:text="@{mainViewModele.dateTxt}"
         android:hint="@string/date"
-        android:inputType="date"
+
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toTopOf="@id/main_first_depart_km"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
-
+        tools:text="@android:string/unknownName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
@@ -51,11 +52,9 @@
         android:id="@+id/main_first_depart_km"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:ems="9"
+        android:layout_marginStart="20dp"
         android:text="@{mainViewModele.departKMTxt}"
-
-        android:inputType="textPersonName"
+        tools:text="@android:string/unknownName"
         app:layout_constraintBottom_toTopOf="@id/main_first_depart_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
@@ -68,13 +67,20 @@
         android:layout_height="wrap_content"
         android:text="@{mainViewModele.departLocation}"
         tools:text="@android:string/unknownName"
-        android:inputType="textPersonName"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
+
         app:layout_constraintBottom_toBottomOf="@id/main_first_depart_km"
         app:layout_constraintStart_toEndOf="@id/main_first_depart_km"
         app:layout_constraintTop_toTopOf="@id/main_first_depart_km" />
-
-    <EditText
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/main_first_arrivee_km_til"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    app:layout_constraintBottom_toTopOf="@id/main_first_arrivee_location_til"
+    app:layout_constraintStart_toStartOf="@id/main_first_depart_km"
+    app:layout_constraintTop_toBottomOf="@id/main_first_depart_location">
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/main_first_arrivee_km"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,11 +90,17 @@
         android:inputType="textPersonName"
         android:text="@={mainViewModele.arriveeKMTxt}"
 
-        app:layout_constraintBottom_toTopOf="@id/main_first_arrivee_location"
+        />
+</com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:id="@+id/main_first_arrivee_location_til"
+        app:layout_constraintBottom_toBottomOf="@id/main_first_guideline"
         app:layout_constraintStart_toStartOf="@id/main_first_depart_km"
-        app:layout_constraintTop_toBottomOf="@id/main_first_depart_location" />
-
-    <EditText
+        app:layout_constraintTop_toBottomOf="@id/main_first_arrivee_km_til">
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/main_first_arrivee_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,10 +109,8 @@
         android:hint="@string/destination"
         android:text="@={mainViewModele.arriveeLocation}"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@id/main_first_guideline"
-        app:layout_constraintStart_toStartOf="@id/main_first_depart_km"
-        app:layout_constraintTop_toBottomOf="@id/main_first_arrivee_km" />
-
+         />
+</com.google.android.material.textfield.TextInputLayout>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_first_guideline"
         android:layout_width="wrap_content"
