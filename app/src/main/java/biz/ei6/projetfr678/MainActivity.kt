@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProviders
 
 import androidx.navigation.fragment.findNavController
 
@@ -15,6 +17,8 @@ import kotlinx.android.synthetic.main.content_main.*
 class MainActivity : AppCompatActivity() {
 
     val TAG = "FR678MAIN"
+
+    lateinit var mViewModel : MainViewModele
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,9 @@ class MainActivity : AppCompatActivity() {
         tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_email)})
         tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_dialer)})
         tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_map)})
+
+
+        mViewModel = ViewModelProviders.of(this).get(MainViewModele::class.java)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
