@@ -83,9 +83,15 @@ class FirstFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 val index = tab!!.position
 
-                if(index == 0) {
-                    val action = FirstFragmentDirections.actionFirstFragmentToVideoFragment()
-                    findNavController().navigate(action)
+                when(index) {
+                  0 -> {
+                      val action = FirstFragmentDirections.actionFirstFragmentToVideoFragment()
+                      findNavController().navigate(action)
+                  }
+                    1-> {
+                        val action = FirstFragmentDirections.actionFirstFragmentToCaptureFragment()
+                        findNavController().navigate(action)
+                    }
                 }
             }
 

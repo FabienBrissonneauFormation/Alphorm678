@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_video.*
 import kotlinx.android.synthetic.main.fragment_video.view.*
 import java.io.BufferedInputStream
@@ -54,6 +55,7 @@ fun entrerEnModePicInPic() {
         .build()
 
     video_pic.visibility = View.INVISIBLE
+
 
     video_view.setMediaController(null)
 
