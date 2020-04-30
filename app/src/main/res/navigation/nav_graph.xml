@@ -16,6 +16,9 @@
             app:destination="@id/SecondFragment" >
 
         </action>
+        <action
+            android:id="@+id/action_FirstFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
 
     </fragment>
     <fragment
@@ -33,5 +36,10 @@
             app:argType="biz.ei6.projetfr678.Voyage"
             />
     </fragment>
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="biz.ei6.projetfr678.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
 
 </navigation>

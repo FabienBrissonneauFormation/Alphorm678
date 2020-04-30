@@ -15,6 +15,8 @@ import androidx.transition.TransitionManager
 import biz.ei6.projetfr678.BR.mainViewModele
 import biz.ei6.projetfr678.databinding.FragmentFirstScene1Binding
 import biz.ei6.projetfr678.databinding.FragmentFirstScene2Binding
+import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_first_scene1.*
 import kotlinx.android.synthetic.main.fragment_first_scene1.main_first_date
@@ -70,12 +72,37 @@ class FirstFragment : Fragment() {
             partir()
         }
 
+
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        activity?.tablayout?.addOnTabSelectedListener( object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                val index = tab!!.position
+
+                if(index == 0) {
+                    val action = FirstFragmentDirections.actionFirstFragmentToVideoFragment()
+                    findNavController().navigate(action)
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val index = tab!!.position
+
+                if(index == 0) {
+                    val action = FirstFragmentDirections.actionFirstFragmentToVideoFragment()
+                    findNavController().navigate(action)
+                }
+            }
+
+        })
     }
 
     private fun valider() {

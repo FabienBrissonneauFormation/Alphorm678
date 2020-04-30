@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProviders
 
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.tabs.TabLayout
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -32,9 +33,10 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG,"oncreate")
 
 
-        tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_email)})
-        tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_dialer)})
+        tablayout.addTab(tablayout.newTab().apply {setIcon(R.drawable.ic_video_view)})
+        tablayout.addTab(tablayout.newTab().apply {setIcon(R.drawable.ic_video_record)})
         tablayout.addTab(tablayout.newTab().apply {setIcon(android.R.drawable.ic_dialog_map)})
+
 
 
         mViewModel = ViewModelProviders.of(this).get(MainViewModele::class.java)
