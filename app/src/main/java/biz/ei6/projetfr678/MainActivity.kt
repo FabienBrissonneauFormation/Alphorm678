@@ -1,5 +1,6 @@
 package biz.ei6.projetfr678
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 
@@ -55,7 +56,9 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> {
 
+                val intent = Intent(this, SettingsActivity::class.java).apply { addFlags(Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_NEW_TASK) }
 
+                startActivity(intent)
                  return true
             }
             else -> super.onOptionsItemSelected(item)
