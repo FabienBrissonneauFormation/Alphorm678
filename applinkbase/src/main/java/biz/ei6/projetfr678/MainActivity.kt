@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        Log.d(TAG, intent.action)
+        Log.d(TAG, intent.action ?: "pas d'action")
         Log.d(TAG, intent.dataString ?: "pas de data")
 
         Log.d(TAG, intent.data?.lastPathSegment ?: " pas de last segment")

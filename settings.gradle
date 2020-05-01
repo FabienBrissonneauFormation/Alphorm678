@@ -1,2 +1,3 @@
 rootProject.name='ProjetFR678'
-include ':app'
+include ':applinkbase'
+include ':dynamicfeature'
