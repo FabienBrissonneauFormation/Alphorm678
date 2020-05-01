@@ -1,6 +1,7 @@
 package biz.ei6.projetfr678
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 
@@ -41,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
 
         mViewModel = ViewModelProviders.of(this).get(MainViewModele::class.java)
+
+        if(packageManager.hasSystemFeature(PackageManager.FEATURE_FREEFORM_WINDOW_MANAGEMENT)) {
+            Log.d(TAG,"Freeform est supporté")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

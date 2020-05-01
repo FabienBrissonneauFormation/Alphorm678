@@ -19,9 +19,17 @@
             android:name=".MainActivity"
             android:configChanges="orientation"
             android:resizeableActivity="true"
+
             android:label="@string/app_name"
             android:supportsPictureInPicture="true"
             android:theme="@style/AppTheme.NoActionBar">
+
+            <layout
+                android:defaultHeight="300dp"
+                android:defaultWidth="300dp"
+                android:gravity="start"
+                />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
