@@ -46,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         if(packageManager.hasSystemFeature(PackageManager.FEATURE_FREEFORM_WINDOW_MANAGEMENT)) {
             Log.d(TAG,"Freeform est supporté")
         }
+
+
+        Log.d(TAG, intent.action)
+        Log.d(TAG, intent.dataString ?: "pas de data")
+
+        Log.d(TAG, intent.data?.lastPathSegment ?: " pas de last segment")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
